@@ -8,27 +8,27 @@ Currently the Engine is in early development and planned features may be added o
 ## Planned Features
 
 ### Graphical
-* Graphics handling
+* __Graphics handling__
 
 _A handler used to load, sort and use the graphical files that will be seen by the player_
-* Animation handling
+* __Animation handling__
 
 _A handler used to create animation from sprite sheets_
 
 ### Mechanical
-* Pathfinding
+* __Pathfinding__
 
 _This will be used to make sure the sprites in game move frictionless to the point where the player have directed them to go_
-* Dialogue handling
+* __Dialogue handling__
 
 _This must be able to contain several characters and must be easy to use for the creation of dialogues in game_
-* Inventory system
+* __Inventory system__
 
 _This must be able to store and sort the objects picked up during the game_
-* Input handling
+* __Input handling__
 
 _This must be able preliminary to handle the input only on Android_
-* Map-file reader
+* __Map-file reader__
 
 _This must be able to create a map from a single file with all its objects, background, foreground and central ground_
-* Action handling
+* __Action handling__
