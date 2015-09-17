@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<images>
+    <!---The path of the foreground image-->
+    <fg path="" />
+    <!---The path of the background image-->
+    <bg path="" />
+    <!---The path of the collision map-->
+    <cm path="" />
+</images>
+<characters>
+    <!--- The id and the position in pixels of the character. dId is the dialogue id of the character-->
+    <character id="" x="" y="" dId=""/>
+</characters>
+<objects>
+    <!---The id and the position in pixels of the object-->
+    <object id="" x="" y=""/>
+    <object id="" x="" y=""/>
+</objects>

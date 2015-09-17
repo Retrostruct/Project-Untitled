@@ -10,15 +10,15 @@ Currently the Engine is in early development and planned features may be added o
 ### Graphical
 * __Graphics handling__
 
-_A handler used to load, sort and use the graphical files that will be seen by the player_
+_A handler used to load, sort and use the graphical files that will be seen by the player. The sorting will handle things like what layer should be drawn over others._
 * __Animation handling__
 
-_A handler used to create animation from sprite sheets_
+_A handler used to create animation from sprite sheets. Animations should contain of frames which can shown individually long time before cycling to the next frame. _
 
 ### Mechanical
 * __Pathfinding__
 
-_This will be used to make sure the sprites in game move frictionless to the point where the player have directed them to go_
+_This will be used to make sure the sprites in game move frictionless to the point where the player have directed them to go._
 * __Dialogue handling__
 
 _This must be able to contain several characters and must be easy to use for the creation of dialogues in game_
