@@ -1,4 +1,4 @@
-# Jigsaw Engine 1.0
+ # Jigsaw Engine 1.0
 
 The Jigsaw Engine aims at creating a frictionless enviroment to develop point and click, puzzle, adventure games.
 Currently the Engine is in early development and planned features may be added or removed freely as we move towards a finished product.
@@ -32,3 +32,5 @@ _This must be able preliminary to handle the input only on Android_
 
 _This must be able to create a map from a single file with all its objects, background, foreground and central ground_
 * __Action handling__
+
+Hej, det här bör tas bort ;)
