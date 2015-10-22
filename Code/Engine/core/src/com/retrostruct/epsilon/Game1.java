@@ -2,10 +2,16 @@ package com.retrostruct.epsilon;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+
+import javafx.scene.media.MediaPlayer;
+
+import static  Gdx.*;
 
 public class Game1 extends ApplicationAdapter {
 	SpriteBatch batch;
@@ -17,10 +23,12 @@ public class Game1 extends ApplicationAdapter {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
+		img = new Texture("pengiun.jpg");
 		currentPosition = new Vector2(0,0);
 		goTo = new Vector2(0,0);
 		speed = 5;
+
+
 	}
 
 	@Override
