@@ -11,7 +11,6 @@ import com.badlogic.gdx.math.Vector2;
 
 import javafx.scene.media.MediaPlayer;
 
-import static  Gdx.*;
 
 public class Game1 extends ApplicationAdapter {
 	SpriteBatch batch;
