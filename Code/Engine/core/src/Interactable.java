@@ -1,3 +1,4 @@
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 
@@ -17,6 +18,11 @@ public abstract class Interactable {
 
     }
 
+    public void create(String assetName, int x, int y){
+        texture = new Texture(assetName);
+        position = new Vector2(x,y);
+    }
+
     public void onLoad(){
 
     }
@@ -26,7 +32,7 @@ public abstract class Interactable {
     }
 
     public void onInteract(Interactions interaction){
-
+        Gdx.app.debug("Interactable used as child: ", "onInteract function is not defined for current object (" + this.toString() + ")");
     }
 
     protected String onExamine(){

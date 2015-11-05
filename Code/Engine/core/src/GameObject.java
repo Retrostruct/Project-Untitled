@@ -9,13 +9,7 @@ public abstract class GameObject extends Interactable {
 
     @Override
     public void onInteract(Interactions interaction) {
-
-        if(super.interactionPossible(interaction)){
-
-
-
-        }
-
+        super.onInteract(interaction);
     }
 
 

@@ -1,5 +1,5 @@
 /**
- * Created by kasper.esbjornsson on 11/5/2015.
+ * Created by Kasper on 11/5/2015.
  */
 public class TestObject extends GameObject {
 
