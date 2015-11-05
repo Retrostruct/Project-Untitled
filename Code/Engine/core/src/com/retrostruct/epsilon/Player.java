@@ -29,15 +29,15 @@ public class Player {
         moveY = y;
     }
 
-    public void update(float delta) {
-        position.x += velocity.x * speed * delta;
-        position.y += velocity.y * speed * delta;
+    public void update(float dt) {
+        position.x += velocity.x * speed * dt;
+        position.y += velocity.y * speed * dt;
     }
 
-    public void draw(SpriteBatch spriteBatch) {
+    public void draw(SpriteBatch batch) {
         for (Animation a:
              animations) {
-            a.draw(spriteBatch);
+            a.draw(batch, position.x, position.y);
         }
     }
 }
