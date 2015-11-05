@@ -9,7 +9,8 @@ import com.badlogic.gdx.math.Vector2;
  */
 public class Animation {
     Texture texture;
-    int frameX, frameY, imgX, imgY, srcX, srcY, timer, interval;
+    int frameX, frameY, imgX, imgY, srcX, srcY, interval;
+    float timer;
 
     public Animation(String path, int frameX, int frameY, int interval) {
         this.frameX = frameX;
@@ -34,7 +35,7 @@ public class Animation {
             timer = 0;
             srcX++;
             srcX %= imgX / frameX;
-            System.out.println(srcX);
+            System.out.println(dt);
         }
     }
 

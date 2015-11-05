@@ -10,7 +10,7 @@ import java.util.List;
  * Created by Simon on 11/4/2015.
  */
 public class Player {
-    List<Animation> animations;
+    Animation animation;
     Vector2 position, velocity, direction;
     int moveX, moveY;
     float speed = 1;
@@ -35,9 +35,6 @@ public class Player {
     }
 
     public void draw(SpriteBatch batch) {
-        for (Animation a:
-             animations) {
-            a.draw(batch, position.x, position.y);
-        }
+        animation.draw(batch, position.x, position.y);
     }
 }
