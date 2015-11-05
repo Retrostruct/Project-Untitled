@@ -8,9 +8,10 @@ import java.util.List;
  */
 public abstract class Interactable {
 
-    protected List<Interactions> possibleInteractions;
+    protected Interactions[] possibleInteractions = new Interactions[3];
     protected Vector2 position;
     protected Texture texture;
+    protected String examine;
 
     public Interactable(){
 
@@ -20,12 +21,16 @@ public abstract class Interactable {
 
     }
 
-    public List<Interactions> getPossibleInteractions(){
-     return possibleInteractions;
+    public Interactions[] getPossibleInteractions(){
+        return possibleInteractions;
     }
 
     public void onInteract(Interactions interaction){
 
+    }
+
+    protected String onExamine(){
+        return examine;
     }
 
     protected boolean interactionPossible(Interactions interaction){
