@@ -9,6 +9,11 @@ public class TestObject extends GameObject {
         possibleInteractions[2] = Interactions.Push;
     }
 
+    public void create(Interactions[] possibleInteractions, String examinationString){
+        this.possibleInteractions = possibleInteractions;
+        this.examine = examinationString;
+    }
+
     @Override
     public void onInteract(Interactions interaction) {
         int indexCheck = 0;

@@ -35,17 +35,8 @@ public abstract class Interactable {
         Gdx.app.debug("Interactable used as child: ", "onInteract function is not defined for current object (" + this.toString() + ")");
     }
 
+    /***onExamine should be run when player is examining the Interactable**/
     protected String onExamine(){
         return examine;
-    }
-
-    protected boolean interactionPossible(Interactions interaction){
-        for(Interactions i: possibleInteractions) {
-            if(interaction == i){
-                return true;
-            }
-        }
-
-        return false;
     }
 }
