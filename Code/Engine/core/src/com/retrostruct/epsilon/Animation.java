@@ -1,5 +1,6 @@
 package com.retrostruct.epsilon;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
@@ -11,6 +12,10 @@ public class Animation {
     Texture texture;
     int frameX, frameY, imgX, imgY, srcX, srcY, interval;
     float timer;
+
+    public int getCurrentAnimation() {
+        return srcY + 1;
+    }
 
     public Animation(String path, int frameX, int frameY, int interval) {
         this.frameX = frameX;
@@ -35,7 +40,6 @@ public class Animation {
             timer = 0;
             srcX++;
             srcX %= imgX / frameX;
-            System.out.println(dt);
         }
     }
 
