@@ -9,37 +9,43 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 
 public class Game1 extends ApplicationAdapter {
-	SpriteBatch batch;
-	Stage stage;
-	Mouse mouse;
+	public static final int VIRTUAL_WIDTH = 800;
+	public static final int VIRTUAL_HEIGHT = 600;
 	
 	Player player;
 	Vector2 goTo;
 	Vector2 startPos;
-    
-	@Override
-	public void create () {
-		batch = new SpriteBatch();
-		stage = new Stage(new ExtendViewport(800, 600));
-		mouse = new Mouse(0, 0);
-		
-		startPos = new Vector2(800 / 2, 600 / 2);
+	
+	public void load() {
+		startPos = new Vector2(VIRTUAL_WIDTH / 2, VIRTUAL_HEIGHT / 2);
 		player = new Player(startPos);
 	}
 	
 	public void update(float dt) {
+		// Update here
 		player.update(dt);
-		if(mouse.isPressed()) {
-			goTo = mouse.getPos();
-		}
 		
-		if(goTo != null) {
-			player.move(goTo);
-		}
+		if(mouse.isPressed()) { goTo = mouse.getPos(); }
+		if(goTo != null) { player.move(goTo); }
 	}
 	
 	public void draw(SpriteBatch batch) {
+		// Draw here
 		player.draw(batch);
+	}
+	
+	// Objects and methods that should not be changed!
+	SpriteBatch batch;
+	Stage stage;
+	Mouse mouse;
+	
+	@Override
+	public void create () {
+		batch = new SpriteBatch();
+		stage = new Stage(new ExtendViewport(VIRTUAL_WIDTH, VIRTUAL_HEIGHT));
+		mouse = new Mouse(0, 0);
+		
+		load();
 	}
 
 	@Override
