@@ -1,27 +1,28 @@
 package com.retrostruct.epsilon;
 
-import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
-
-import java.util.List;
 
 /**
  * Created by Simon on 11/4/2015.
  */
 public class Player {
-    Animation ani;
+	Animation ani;
     Vector2 pos, dir, origin;
     int w, h;
     float speed = 100;
+    Texture collision;
 
-    public Player() {
-        ani = new Animation("data/AnimationTest.png", 100, 100, 10);
-        w = 100;
-        h = 100;
-        pos = new Vector2(0, 0);
+    public Player(Vector2 pos) {
+    	w = 50;
+        h = 50;
+        ani = new Animation("data/AnimationTest.png", w, h, 10);
+        this.pos = new Vector2(pos.x - w / 2, pos.y - h / 2);
         dir = new Vector2(0, 0);
         origin = new Vector2(0, 0);
+        
+        collision = new Texture("data/collision.png");
     }
 
     public void move(Vector2 vec) {
@@ -49,11 +50,12 @@ public class Player {
         pos.x += dir.x * speed * dt;
         pos.y += dir.y * speed * dt;
         origin.x = pos.x + (w / 2);
-        origin.y = pos.y - (h / 2);
+        origin.y = pos.y + (h / 2);
         ani.update(dt);
     }
 
     public void draw(SpriteBatch batch) {
-        ani.draw(batch, pos.x, Gdx.graphics.getHeight() - pos.y);
+    	batch.draw(collision, 0, 0);
+        ani.draw(batch, pos.x, pos.y);
     }
 }

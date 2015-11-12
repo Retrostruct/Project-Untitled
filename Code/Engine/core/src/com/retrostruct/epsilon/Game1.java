@@ -2,35 +2,63 @@ package com.retrostruct.epsilon;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.viewport.ExtendViewport;
 
 public class Game1 extends ApplicationAdapter {
 	SpriteBatch batch;
-    Player player;
-    Vector2 vec = null;
+	Stage stage;
+	Mouse mouse;
 	
+	Player player;
+	Vector2 goTo;
+	Vector2 startPos;
+    
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-        player = new Player();
+		stage = new Stage(new ExtendViewport(800, 600));
+		mouse = new Mouse(0, 0);
+		
+		startPos = new Vector2(800 / 2, 600 / 2);
+		player = new Player(startPos);
+	}
+	
+	public void update(float dt) {
+		player.update(dt);
+		if(mouse.isPressed()) {
+			goTo = mouse.getPos();
+		}
+		
+		if(goTo != null) {
+			player.move(goTo);
+		}
+	}
+	
+	public void draw(SpriteBatch batch) {
+		player.draw(batch);
 	}
 
 	@Override
 	public void render () {
-        player.update(Gdx.graphics.getDeltaTime());
-        if(Gdx.input.isTouched() || Gdx.input.isButtonPressed(Buttons.LEFT)) {
-			vec	= new Vector2(Gdx.input.getX(), Gdx.input.getY());
-        }
-		player.move(vec);
-
-		Gdx.gl.glClearColor(0.39f, 0.58f, 0.93f, 1);
+		mouse.update(stage);
+		update(Gdx.graphics.getDeltaTime());
+		
+		Gdx.gl.glClearColor(0.5f, 0.5f, 0.5f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
+		
+		batch.setProjectionMatrix(stage.getCamera().combined);
+		
 		batch.begin();
-        player.draw(batch);
+		draw(batch);
 		batch.end();
+	}
+	
+	@Override
+	public void resize(int w, int h) {
+		stage.getViewport().update(w, h);
 	}
 }
