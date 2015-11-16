@@ -5,7 +5,7 @@ import com.badlogic.gdx.math.Vector2;
 import java.util.List;
 
 /**
- * Created by kasper.esbjornsson on 11/4/2015.
+ * Created by Kasper on 11/4/2015.
  */
 public abstract class Interactable {
 
