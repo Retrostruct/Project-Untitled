@@ -19,6 +19,8 @@ public class ObjectTemplate extends GameObject {
     public void onInteract(Interactions interaction) {
         int indexCheck = 0;
 
+        boolean interacted = false;
+
         //Run through all the interactions avalible as possible interactions
         for (Interactions i:
              possibleInteractions) {
@@ -28,18 +30,29 @@ public class ObjectTemplate extends GameObject {
 
                 if(indexCheck == 0){
                     //Run code for USE
+
+                    break;
                 }
                 if(indexCheck == 1){
                     //Run code for PICK UP
+
+                    break;
                 }
                 if(indexCheck == 2){
                     //Run code for PUSH
+
+                    break;
                 }
+
+                interacted = true;
             }
 
             indexCheck++;
+
         }
 
-        impossibleInteraction(this.toString());
+        if(!interacted) {
+            impossibleInteraction(this.toString());
+        }
     }
 }
