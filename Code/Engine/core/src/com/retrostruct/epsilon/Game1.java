@@ -17,12 +17,13 @@ public class Game1 extends ApplicationAdapter {
 	Vector2 startPos;
 	
 	public void load() {
+		// TODO: Load
 		startPos = new Vector2(VIRTUAL_WIDTH / 2, VIRTUAL_HEIGHT / 2);
 		player = new Player(startPos);
 	}
 	
 	public void update(float dt) {
-		// Update here
+		// TODO: Update
 		player.update(dt);
 		
 		if(mouse.isPressed()) { goTo = mouse.getPos(); }
@@ -30,7 +31,7 @@ public class Game1 extends ApplicationAdapter {
 	}
 	
 	public void draw(SpriteBatch batch) {
-		// Draw here
+		// TODO: Draw
 		player.draw(batch);
 	}
 	
