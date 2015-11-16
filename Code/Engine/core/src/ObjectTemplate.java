@@ -1,9 +1,10 @@
 /**
  * Created by Kasper on 11/5/2015.
+ * This should serve as the basic object set up.
  */
-public class TestObject extends GameObject {
+public class ObjectTemplate extends GameObject {
 
-    public TestObject(){
+    public ObjectTemplate(){
         possibleInteractions[0] = Interactions.Use;
         possibleInteractions[1] = Interactions.Use.PickUp;
         possibleInteractions[2] = Interactions.Push;
@@ -34,10 +35,11 @@ public class TestObject extends GameObject {
                 if(indexCheck == 2){
                     //Run code for PUSH
                 }
-
             }
 
             indexCheck++;
         }
+
+        impossibleInteraction(this.toString());
     }
 }
