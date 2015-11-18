@@ -1,3 +1,5 @@
+package com.retrostruct.epsilon;
+
 /**
  * Created by Kasper on 11/5/2015.
  * This should serve as the basic object set up.
@@ -8,11 +10,6 @@ public class ObjectTemplate extends GameObject {
         possibleInteractions[0] = Interactions.Use;
         possibleInteractions[1] = Interactions.Use.PickUp;
         possibleInteractions[2] = Interactions.Push;
-    }
-
-    public void create(Interactions[] possibleInteractions, String examinationString){
-        this.possibleInteractions = possibleInteractions;
-        this.examine = examinationString;
     }
 
     @Override
