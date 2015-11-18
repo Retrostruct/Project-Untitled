@@ -1,8 +1,8 @@
+package com.retrostruct.epsilon;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
-
-import java.util.List;
 
 /**
  * Created by Kasper on 11/4/2015.
@@ -12,10 +12,11 @@ public abstract class Interactable {
     protected Interactions[] possibleInteractions = new Interactions[3];
     protected Vector2 position;
     protected Texture texture;
-    protected String examine;
+    protected String[] examine;
+    protected int timesExamined;
 
     public Interactable(){
-
+        timesExamined = 0;
     }
 
     public void create(String assetName, int x, int y){
@@ -32,11 +33,17 @@ public abstract class Interactable {
     }
 
     public void onInteract(Interactions interaction){
-        Gdx.app.debug("Interactable used as child: ", "onInteract function is not defined for current object (" + this.toString() + ")");
+        Gdx.app.debug("com.retrostruct.epsilon.Interactable used as child: ", "onInteract function is not defined for current object (" + this.toString() + ")");
     }
 
-    /***onExamine should be run when player is examining the Interactable**/
-    protected String onExamine(){
-        return examine;
+    /***onExamine should be run when player is examining the com.retrostruct.epsilon.Interactable**/
+    public String onExamine(){
+        if(timesExamined > examine.length + 1){
+            timesExamined = examine.length + 1;
+        }
+
+        timesExamined++;
+
+        return examine[timesExamined-1];
     }
 }

@@ -1,3 +1,5 @@
+package com.retrostruct.epsilon;
+
 import com.badlogic.gdx.Gdx;
 
 /**
