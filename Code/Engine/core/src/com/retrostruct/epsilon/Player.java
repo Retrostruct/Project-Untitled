@@ -36,6 +36,17 @@ public class Player {
         dir.nor();
     }
     
+    public void say(String arg) {
+    	// TODO: Make player say something
+    }
+    
+    public void say(String[] args) {
+    	// TODO: Only continue if player is done talking or skipped
+    	for(int i = 0; i < args.length; i++) {
+    		say(args[i]);
+    	}
+    }
+    
     public Boolean isMoving() {
     	return (dir.x != 0 && dir.y != 0);
     }
