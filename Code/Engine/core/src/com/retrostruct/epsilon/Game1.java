@@ -9,7 +9,6 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 
 public class Game1 extends ApplicationAdapter {
-<<<<<<< HEAD
 	public static final int VIRTUAL_WIDTH = 800;
 	public static final int VIRTUAL_HEIGHT = 600;
 	
@@ -40,44 +39,28 @@ public class Game1 extends ApplicationAdapter {
 	SpriteBatch batch;
 	Stage stage;
 	Mouse mouse;
-=======
-	SpriteBatch batch;
->>>>>>> origin/SemiMaster
 	
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-<<<<<<< HEAD
 		stage = new Stage(new ExtendViewport(VIRTUAL_WIDTH, VIRTUAL_HEIGHT));
 		mouse = new Mouse(0, 0);
 		
 		load();
-=======
->>>>>>> origin/SemiMaster
 	}
 
 	@Override
 	public void render () {
-<<<<<<< HEAD
 		mouse.update(stage);
 		update(Gdx.graphics.getDeltaTime());
 		
 		Gdx.gl.glClearColor(0.5f, 0.5f, 0.5f, 1);
-=======
-
-
-		Gdx.gl.glClearColor(.2f,1,.4f,1);
->>>>>>> origin/SemiMaster
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
 		batch.setProjectionMatrix(stage.getCamera().combined);
 		
 		batch.begin();
-<<<<<<< HEAD
 		draw(batch);
-=======
-
->>>>>>> origin/SemiMaster
 		batch.end();
 	}
 	
