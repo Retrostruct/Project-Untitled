@@ -18,7 +18,7 @@ public class HandbagItem extends GameObject {
     }
 
     @Override
-    public void onInteract(Interactions interaction) {
+    public void onInteract(Interactions interaction, Player player) {
         int indexCheck = 0;
 
         boolean interacted = false;
