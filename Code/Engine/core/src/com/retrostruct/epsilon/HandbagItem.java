@@ -51,6 +51,7 @@ public class HandbagItem extends GameObject {
 
             indexCheck++;
 
+
         }
 
         if(!interacted) {

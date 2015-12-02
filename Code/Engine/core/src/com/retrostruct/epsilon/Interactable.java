@@ -32,7 +32,7 @@ public abstract class Interactable {
         return possibleInteractions;
     }
 
-    public void onInteract(Interactions interaction){
+    public void onInteract(Interactions interaction, Player player){
         Gdx.app.debug("com.retrostruct.epsilon.Interactable used as child: ", "onInteract function is not defined for current object (" + this.toString() + ")");
     }
 
