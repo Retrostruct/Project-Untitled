@@ -1,0 +1,19 @@
+<<?xml version="1.0" encoding="UTF-8"?>
+    <!--- This Dialogue is for the handbag in level 1 (womens restroom) -->
+    <dialogue id = '1'>
+        <text>
+            *silence*
+        </text>
+        <response state = '1'>
+            Oh, hello there handbag!
+        </respose>
+        <response state = '2'>
+            Hey, how's it going?
+        </response>
+        <text>
+            *silence*
+        </text>
+    </dialogue>
+    <!--- This Dialogue is for something else -->
+    <dialogue id = '2'>
+    </dialogue>
