@@ -12,8 +12,8 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 
 import retrostruct.epsilon.entities.Player;
 import retrostruct.epsilon.handlers.ItemHandler;
+import retrostruct.epsilon.handlers.LevelHandler;
 import retrostruct.epsilon.handlers.MouseHandler;
-import retrostruct.epsilon.items.Handbag;
 
 public class GdxGame extends ApplicationAdapter {
 	public static final int VIRTUAL_WIDTH = 1920;
@@ -33,14 +33,12 @@ public class GdxGame extends ApplicationAdapter {
 	public void create () {
 		batch = new SpriteBatch(); // Create sprite batch
 		camera = new OrthographicCamera(VIRTUAL_WIDTH, VIRTUAL_HEIGHT); // Create camera
-		viewport = new ScalingViewport(Scaling.fillX, VIRTUAL_WIDTH, VIRTUAL_HEIGHT, camera); // Create viewport
+		viewport = new ScalingViewport(Scaling.fit, VIRTUAL_WIDTH, VIRTUAL_HEIGHT, camera); // Create viewport
 		camera.update(); // Initially, update camera
 		mouse = new MouseHandler(); // Create mouse
 		
 		player = new Player(0, -250);
-		
-		// Add items
-		ItemHandler.AddItem(new Handbag());
+		LevelHandler.setLevel(0);
 		
 		// Test
 		bg = new Texture("map.png");

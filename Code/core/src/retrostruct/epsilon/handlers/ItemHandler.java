@@ -33,6 +33,10 @@ public class ItemHandler {
 		return false;
 	}
 	
+	public static void flush() {
+		items.clear();
+	}
+	
 	public static void render(SpriteBatch batch) {
 		for(Item item: items) {
 			if(item instanceof Renderable) {

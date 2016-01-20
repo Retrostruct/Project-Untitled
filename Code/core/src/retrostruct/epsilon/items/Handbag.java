@@ -24,8 +24,8 @@ public class Handbag extends Item implements Interactable, Renderable {
 	
 	Texture texture; // Can be replaced with an animation or whatever
 	
-	public Handbag() {
-		super("Handbag", 0, 0, 512, 512);
+	public Handbag(float x, float y) {
+		super("Handbag", x, y, 512, 512);
 		texture = new Texture("handbag.png");
 	}
 

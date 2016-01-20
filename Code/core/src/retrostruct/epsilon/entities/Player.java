@@ -41,6 +41,7 @@ public class Player extends Character {
 		
 		// Translate camera and move player
 		camera.translate(velocity, 0);
+		camera.position.x = Math.max(0, Math.min(100, camera.position.x));
 		position.x += velocity;
 		
 	}
