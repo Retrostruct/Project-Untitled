@@ -5,30 +5,33 @@ import java.lang.reflect.InvocationTargetException;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import retrostruct.epsilon.Levels;
+import retrostruct.epsilon.Log;
 
 public class LevelHandler {
 	
-	public static int currentId;
+	private static int currentId;
+	private static int levelWidth;
+	
+	public static int getCurrentId() { return currentId; }
+	public static int getLevelWidth() { return levelWidth; }
 	
 	public static void setLevel(int id) {
 		currentId = id;
 		ItemHandler.flush();
 		try {
-			Levels.class.getMethods()[id].invoke(null);
+			levelWidth = (int)Levels.class.getMethods()[id].invoke(null);
+			Log.print("Level " + id + " loaded successfully");
+			return;
 		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (InvocationTargetException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		Log.print("There was a problem loading level id:" + id + "");
 	}
 
 	public static void render(SpriteBatch batch) {

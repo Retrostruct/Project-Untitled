@@ -5,9 +5,9 @@ import retrostruct.epsilon.items.Handbag;
 
 public class Levels {
 	
-	public static void bathroom() {
+	public static int bathroom() {
 		ItemHandler.AddItem(new Handbag(0, 0));
-		System.out.println("Well, this works");
+		return 1280;
 	}
 
 }

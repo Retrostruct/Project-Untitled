@@ -5,6 +5,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
+import retrostruct.epsilon.Log;
+
 public class Animation {
 	
 	private Texture sheet;
@@ -12,7 +14,10 @@ public class Animation {
 	private float timer, interval;
 	
 	public Animation(String path, int frameX, int frameY) {
-		sheet = new Texture(path);
+		try {
+			sheet = new Texture(path);
+			Log.print("Loaded animation " + path);
+		} catch(Exception e) {}
 		this.frameX = frameX;
 		this.frameY = frameY;
 		x = 0;

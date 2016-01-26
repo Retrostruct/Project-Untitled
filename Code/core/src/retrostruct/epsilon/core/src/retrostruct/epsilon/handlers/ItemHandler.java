@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import retrostruct.epsilon.Log;
 import retrostruct.epsilon.entities.Player;
 import retrostruct.epsilon.enums.Verbs;
 import retrostruct.epsilon.interfaces.Interactable;
@@ -17,6 +18,7 @@ public class ItemHandler {
 	public static void AddItem(Item item) {
 		// Add item to list
 		items.add(item);
+		Log.print("Added item \"" + item.getName() + "\"");
 	}
 	
 	public static boolean interact(int x, int y, Verbs verb, Player player) {
