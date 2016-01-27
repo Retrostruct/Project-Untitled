@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -34,10 +35,13 @@ public class GdxGame extends ApplicationAdapter {
 		batch = new SpriteBatch(); // Create sprite batch
 		camera = new OrthographicCamera(VIRTUAL_WIDTH, VIRTUAL_HEIGHT); // Create camera
 		viewport = new ScalingViewport(Scaling.fit, VIRTUAL_WIDTH, VIRTUAL_HEIGHT, camera); // Create viewport
+		camera.position.set(VIRTUAL_WIDTH / 2, VIRTUAL_HEIGHT / 2, 0);
+		camera.setToOrtho(false);
 		camera.update(); // Initially, update camera
 		mouse = new MouseHandler(); // Create mouse
 		
-		player = new Player(0, -250);
+		
+		player = new Player(0, 0);
 		LevelHandler.setLevel(0);
 		
 		// Test
@@ -58,7 +62,7 @@ public class GdxGame extends ApplicationAdapter {
 		batch.begin(); // Begin rendering the scene
 		
 		float per = 0.6f;
-		batch.draw(bg, 0, -bg.getHeight()*per/2, bg.getWidth() * per, bg.getHeight() * per);
+		batch.draw(bg, 0,0); // -bg.getHeight()*per/2, bg.getWidth() * per, bg.getHeight() * per);
 		player.render(batch);
 		ItemHandler.render(batch);
 		
