@@ -1,8 +1,11 @@
 package retrostruct.epsilon.entities;
 
+import java.io.Serializable;
+
 import com.badlogic.gdx.math.Vector2;
 
-public abstract class GameObject {
+@SuppressWarnings("serial")
+public abstract class GameObject implements Serializable {
 	
 	protected Vector2 position;
 	

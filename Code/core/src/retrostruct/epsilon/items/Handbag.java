@@ -9,6 +9,8 @@ import retrostruct.epsilon.interfaces.Renderable;
 
 public class Handbag extends Item implements Interactable, Renderable {
 	
+	private static final long serialVersionUID = -4193861417995127938L;
+
 	String[] interactDefault = new String[] {
 			"0", // First element holds how many times a message has been returned
 			"Hmm, that don't seem to work...",
@@ -24,8 +26,11 @@ public class Handbag extends Item implements Interactable, Renderable {
 	
 	Texture texture; // Can be replaced with an animation or whatever
 	
-	public Handbag(float x, float y) {
-		super("Handbag", x, y, 512, 512);
+	public Handbag(int id, float x, float y) {
+		super("Handbag", id, x, y, 512, 512);
+	}
+	
+	public void loadContent() {
 		texture = new Texture("handbag.png");
 	}
 

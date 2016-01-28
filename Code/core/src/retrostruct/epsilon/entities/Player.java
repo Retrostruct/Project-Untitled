@@ -11,6 +11,7 @@ import retrostruct.epsilon.handlers.ItemHandler;
 import retrostruct.epsilon.handlers.MouseHandler;
 
 public class Player extends Character {
+	private static final long serialVersionUID = -5509279692571456935L;
 	
 	private Vector2 direction = new Vector2();
 	private int targetX = 0;
@@ -26,14 +27,11 @@ public class Player extends Character {
 		animation = new Animation("badlogic.jpg", 256, 256);
 	}
 	
-	public void update(MouseHandler mouse, OrthographicCamera camera) {
-		if(mouse.isPressed()) {
+	public void update(OrthographicCamera camera) {
+		if(MouseHandler.isPressed()) {
 			// If nothing is pressed, instead set the target
-			if(!ItemHandler.interact(mouse.getX(), mouse.getY(), Verbs.PICK_UP, this))
-			{
-				targetX = mouse.getX();
-				targetY = mouse.getY();				
-			}
+			if(!ItemHandler.interact(MouseHandler.getX(), MouseHandler.getY(), Verbs.PICK_UP, this))
+				targetX = MouseHandler.getX();
 		}
 		
 		// Reset direction

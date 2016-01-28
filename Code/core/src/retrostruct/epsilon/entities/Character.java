@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import retrostruct.epsilon.graphics.Animation;
 import retrostruct.epsilon.interfaces.Renderable;
 
+@SuppressWarnings("serial")
 public abstract class Character extends GameObject implements Renderable {
 	
 	protected Animation animation;
