@@ -60,7 +60,6 @@ public class Player extends Character {
 		
 		System.out.println(posMes);
 		
-		
 		position.y = clamp(position.y, (float)(0), (float)(floorHeight));
 	}
 	
