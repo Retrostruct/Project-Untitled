@@ -1,4 +1,4 @@
-package retrostruct.epsilon;
+package retrostruct.epsilon.menus;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 

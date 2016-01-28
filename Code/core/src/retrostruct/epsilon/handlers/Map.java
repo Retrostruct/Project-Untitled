@@ -1,4 +1,4 @@
-package retrostruct.epsilon;
+package retrostruct.epsilon.handlers;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -6,7 +6,7 @@ import java.io.ObjectInputStream;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-import retrostruct.epsilon.handlers.SaveGame;
+import retrostruct.epsilon.entities.Room;
 
 public class Map {
 	public static int[][] map = new int[][] {

@@ -7,9 +7,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-import retrostruct.epsilon.Log;
-import retrostruct.epsilon.Room;
+import retrostruct.epsilon.debug.Log;
 import retrostruct.epsilon.entities.Player;
+import retrostruct.epsilon.entities.Room;
 
 public class SaveGame implements Serializable {
 	private static final long serialVersionUID = 217231781995547266L;

@@ -1,4 +1,4 @@
-package retrostruct.epsilon;
+package retrostruct.epsilon.entities;
 
 import java.io.Serializable;
 

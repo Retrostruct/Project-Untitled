@@ -10,10 +10,14 @@ import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
+import retrostruct.epsilon.debug.Log;
 import retrostruct.epsilon.entities.Player;
 import retrostruct.epsilon.enums.GameStates;
+import retrostruct.epsilon.handlers.Map;
 import retrostruct.epsilon.handlers.MouseHandler;
 import retrostruct.epsilon.handlers.SaveGame;
+import retrostruct.epsilon.menus.MainMenu;
+import retrostruct.epsilon.menus.PauseMenu;
 
 public class GdxGame extends ApplicationAdapter {
 	public static final int VIRTUAL_WIDTH = 1280;
@@ -45,10 +49,10 @@ public class GdxGame extends ApplicationAdapter {
 		MouseHandler.update(camera);
 		switch(currentGameState) {
 			case MAIN_MENU:
-				
+				MainMenu.render(batch);
 				break;
 			case PAUSE_MENU:
-				
+				PauseMenu.render(batch);
 				break;
 			case PLAYING:
 				Map.update(); // Update map (Rooms, items etc.)
@@ -67,10 +71,45 @@ public class GdxGame extends ApplicationAdapter {
 		
 		switch(currentGameState) {
 		case MAIN_MENU:
-			MainMenu.update();
+			switch(MainMenu.update()) {
+			case NONE:
+				break;
+			case NEW_GAME:
+				
+				break;
+			case LOAD_GAME:
+				
+				break;
+			case SETTINGS:
+				
+				break;
+			case EXIT:
+				// Save
+				// Exit
+				break;
+			}
 			break;
 		case PAUSE_MENU:
-			PauseMenu.update();
+			switch(PauseMenu.update()) {
+			case NONE:
+				break;
+			case CONTINUE:
+				currentGameState = GameStates.PLAYING;
+				break;
+			case SAVE_GAME:
+				
+				break;
+			case LOAD_GAME:
+				
+				break;
+			case SETTINGS:
+				// PC master race only
+				break;
+			case EXIT_TO_MAIN_MENU:
+				// Should probably ask to save here...
+				currentGameState = GameStates.MAIN_MENU;
+				break;
+			}
 			break;
 		case PLAYING:
 			Map.render(batch); // Render map (Rooms, items etc.) 
