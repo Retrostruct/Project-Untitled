@@ -3,22 +3,20 @@ package com.retrostruct.epsilon;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.List;
 
 /**
  * Created by sebastian.fransson on 2015-12-11.
  */
-public class dialogueHandler {
-    dialogue firstDialogue;
-    dialogue[] nextDialogue;
+public class DialogueHandler {
+    Dialogue firstDialogue;
+    Dialogue[] nextDialogue;
     Choice choice;
     public boolean done;
 
 
-    public dialogueHandler(dialogue firstDialogue, dialogue[] nextDialogue, Choice choice, BitmapFont font){
+    public DialogueHandler(Dialogue firstDialogue, Dialogue[] nextDialogue, Choice choice, BitmapFont font){
         this.firstDialogue = firstDialogue;
         this.choice = choice;
-
         this.nextDialogue = nextDialogue;
     }
 

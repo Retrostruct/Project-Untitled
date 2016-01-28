@@ -3,26 +3,37 @@ package com.retrostruct.epsilon;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.ScalingViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 
 import sun.font.GlyphLayout;
 
 
 public class Game1 extends ApplicationAdapter {
-	Stage stage;
+	OrthographicCamera camera;
+	Viewport viewport;
+
 	SpriteBatch batch;
 	Texture img;
+	Texture cursor;
 	Vector2 goTo;
 	Vector2 currentPosition;
 	float speed;
     BitmapFont font;
 
-	dialogueHandler diaSwitch;
+    Vector2 touchPosition;
+
+	DialogueHandler diaSwitch;
 
 	String[] strings = new String[6];
 
@@ -32,15 +43,27 @@ public class Game1 extends ApplicationAdapter {
 
 	String[] questions = new String[3];
 
-	dialogue dia;
-	dialogue[] answers = new dialogue[3];
+	Dialogue dia;
+	Dialogue[] answers = new Dialogue[3];
 
 	GlyphLayout layout;
 	Choice choiceTest;
 
+	GUI test;
+
+	public static final int VIRTUAL_WIDTH = 1280;
+	public static final int VIRTUAL_HEIGHT = 720;
 	
 	@Override
 	public void create () {
+
+		touchPosition = new Vector2(0,0);
+		cursor = new Texture(Gdx.files.internal("cursor.png"));
+		camera = new OrthographicCamera(VIRTUAL_WIDTH, VIRTUAL_HEIGHT);
+		camera.setToOrtho(false);
+		camera.position.set(VIRTUAL_WIDTH / 2, VIRTUAL_HEIGHT / 2, 0);
+		viewport = new ScalingViewport(Scaling.fit, VIRTUAL_WIDTH, VIRTUAL_WIDTH, camera);
+		camera.update();
 
 		strings[0] = "So you are new here?";
 		strings[1] = "Don't worry";
@@ -64,13 +87,13 @@ public class Game1 extends ApplicationAdapter {
 		answer3[0] = "You are exactly where you need to be";
 		answer3[1] = "I would get going if I were you";
 
-		answers[0] = new dialogue(answer1);
-		answers[1] = new dialogue(answer2);
-		answers[2] = new dialogue(answer3);
+		answers[0] = new Dialogue(answer1);
+		answers[1] = new Dialogue(answer2);
+		answers[2] = new Dialogue(answer3);
 
-		dia = new dialogue(strings);
+		dia = new Dialogue(strings);
 
-		stage = new Stage(new ExtendViewport(800, 600));
+		//stage = new Stage(new FitViewport(1280, 720));
 		batch = new SpriteBatch();
 		img = new Texture("logo.png");
 		currentPosition = new Vector2(0,0);
@@ -78,11 +101,13 @@ public class Game1 extends ApplicationAdapter {
 		speed = 5;
 
 
+		test = new GUI();
+
 		choiceTest = new Choice(questions);
 
         font = new BitmapFont(Gdx.files.internal("SFcartoon.fnt"));
 
-		diaSwitch = new dialogueHandler(dia, answers, choiceTest, font);
+		diaSwitch = new DialogueHandler(dia, answers, choiceTest, font);
 
 	}
 
@@ -97,18 +122,36 @@ public class Game1 extends ApplicationAdapter {
 			goTo.x = Gdx.input.getX();
 			goTo.y = Gdx.input.getY();
 		}
+		Vector3 mousePos = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
+		camera.unproject(mousePos);
 
+        if(Gdx.input.isTouched()){
+            touchPosition.x = Gdx.input.getX();
+            touchPosition.y = Gdx.input.getY();
+        }
 
 
 
 		Gdx.gl.glClearColor(0.5f, 0.5f, 0.5f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		batch.setProjectionMatrix(stage.getCamera().combined);
+		//batch.setProjectionMatrix(stage.getCamera().combined);
+		camera.update();
+		batch.setProjectionMatrix(camera.combined);
+
 
 		batch.begin();
 
+
 		//batch.draw(img, 300, 0);
-		diaSwitch.Render(batch, font, stage);
+		//diaSwitch.Render(batch, font, stage);
+		test.Render(batch);
+
+		batch.draw(cursor, mousePos.x, mousePos.y);
+
+        font.draw(batch, Float.toString(mousePos.x) + " || " + Float.toString(mousePos.y), 100, 100);
+
+
+
 
 		batch.end();
 	}

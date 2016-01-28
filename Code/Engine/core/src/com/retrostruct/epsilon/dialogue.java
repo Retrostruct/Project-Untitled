@@ -19,7 +19,7 @@ import javafx.concurrent.Task;
 /**
  * Created by sebastian.fransson on 2015-12-09.
  */
-public class dialogue {
+public class Dialogue {
 
     String[] strings;
     Texture image;
@@ -30,7 +30,7 @@ public class dialogue {
     public boolean done = false;
 
 
-    public dialogue(String[] strings){
+    public Dialogue(String[] strings){
         this.strings = strings;
         image = new Texture(Gdx.files.internal("red.jpg"));
         layout = new GlyphLayout();

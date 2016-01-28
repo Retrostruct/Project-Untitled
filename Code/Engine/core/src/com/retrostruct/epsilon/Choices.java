@@ -32,16 +32,21 @@ public class Choices {
         image = new Texture(Gdx.files.internal("blackBar.png"));
         image2 = new Texture(Gdx.files.internal("greyBar.png"));
         rectangle = new Rectangle(position.x, position.y, size.x, size.y);
+
         this.answer = answer;
         this.number = number;
+
         sound = Gdx.audio.newSound(Gdx.files.internal("selecting.wav"));
         sound2 = Gdx.audio.newSound(Gdx.files.internal("selected.wav"));
 
     }
 
     public void Render(SpriteBatch spriteBatch, Stage stage, BitmapFont font){
+
         Vector3 pos = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
+
         stage.getCamera().unproject(pos);
+
         Rectangle touch = new Rectangle(pos.x, pos.y, 1, 1);
 
         if(!Gdx.input.isTouched() && pastTouch && rectangle.overlaps(touch)) {
