@@ -1,16 +1,10 @@
 apply plugin: "java"
 sourceCompatibility = 1.6
-<<<<<<< HEAD:Code/Engine/desktop/build.gradle
-sourceSets.main.java.srcDirs = ["src/"]
-project.ext.mainClassName = "com.retrostruct.epsilon.desktop.DesktopLauncher"
-project.ext.assetsDir = new File("../android/assets");
-=======
 sourceSets.main.java.srcDirs = [ "src/" ]
 
 project.ext.mainClassName = "retrostruct.epsilon.desktop.DesktopLauncher"
 project.ext.assetsDir = new File("../core/assets");
 
->>>>>>> SimonNew:Code/desktop/build.gradle
 task run(dependsOn: classes, type: JavaExec) {
     main = project.mainClassName
     classpath = sourceSets.main.runtimeClasspath
