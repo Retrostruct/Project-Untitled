@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>epsilon-desktop</name>
+	<comment>Project epsilon-desktop created by Buildship.</comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.buildship.core.gradleprojectbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.buildship.core.gradleprojectnature</nature>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>assets</name>
+			<type>2</type>
+			<location>C:/Users/kasper.esbjornsson/Desktop/Project-Untitled/Code/core/assets</location>
+		</link>
+	</linkedResources>
+	<filteredResources>
+		<filter>
+			<id>1453889728047</id>
+			<name></name>
+			<type>26</type>
+			<matcher>
+				<id>org.eclipse.ui.ide.multiFilter</id>
+				<arguments>1.0-projectRelativePath-matches-false-false-build</arguments>
+			</matcher>
+		</filter>
+		<filter>
+			<id>1453889728057</id>
+			<name></name>
+			<type>26</type>
+			<matcher>
+				<id>org.eclipse.ui.ide.multiFilter</id>
+				<arguments>1.0-projectRelativePath-matches-false-false-.gradle</arguments>
+			</matcher>
+		</filter>
+	</filteredResources>
+</projectDescription>
