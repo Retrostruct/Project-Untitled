@@ -5,6 +5,7 @@
 !.java
 !.jpg
 !.png
+!.gitignore
 
 # even if they are in subdirectories
 !*/
