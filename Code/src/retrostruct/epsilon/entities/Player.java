@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import retrostruct.epsilon.enums.Verbs;
 import retrostruct.epsilon.graphics.Animation;
 import retrostruct.epsilon.handlers.ItemHandler;
-import retrostruct.epsilon.handlers.MouseHandler;
+import retrostruct.epsilon.input.MouseHandler;
 
 public class Player extends Character {
 	private static final long serialVersionUID = -5509279692571456935L;

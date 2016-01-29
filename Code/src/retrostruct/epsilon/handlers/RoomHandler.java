@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import retrostruct.epsilon.entities.Room;
 
-public class Map {
+public class RoomHandler {
 	public static int[][] map = new int[][] {
 		{0, 1, 3, 0, 0, 0, 0, 0, 0, },
 		{0, 2, 0, 0, 0, 0, 0, 0, 0, },
@@ -20,7 +20,7 @@ public class Map {
 	public static void setCurrentRoom(int id) { currentRoom = id; }
 	public static Room getCurrentRoom(int id) { return rooms[id]; }
 	
-	public static void loadRooms(SaveGame saveGame) {
+	public static void loadAllRooms(SaveGame saveGame) {
 		if(saveGame.getRooms() == null) {
 			// Player has no save game, load default rooms
 			loadDefaultRooms();

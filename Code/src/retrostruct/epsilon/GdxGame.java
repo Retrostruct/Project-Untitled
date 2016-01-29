@@ -13,9 +13,9 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import retrostruct.epsilon.debug.Log;
 import retrostruct.epsilon.entities.Player;
 import retrostruct.epsilon.enums.GameStates;
-import retrostruct.epsilon.handlers.Map;
-import retrostruct.epsilon.handlers.MouseHandler;
+import retrostruct.epsilon.handlers.RoomHandler;
 import retrostruct.epsilon.handlers.SaveGame;
+import retrostruct.epsilon.input.MouseHandler;
 import retrostruct.epsilon.menus.MainMenu;
 import retrostruct.epsilon.menus.PauseMenu;
 
@@ -42,7 +42,7 @@ public class GdxGame extends ApplicationAdapter {
 		player = new Player(0, -250); // Create player
 		SaveGame saveGame = new SaveGame();
 		saveGame.Load(0);
-		Map.loadRooms(saveGame);
+		RoomHandler.loadAllRooms(saveGame);
 	}
 
 	public void render () {
@@ -55,7 +55,7 @@ public class GdxGame extends ApplicationAdapter {
 				PauseMenu.render(batch);
 				break;
 			case PLAYING:
-				Map.update(); // Update map (Rooms, items etc.)
+				RoomHandler.update(); // Update map (Rooms, items etc.)
 				player.update(camera); // Update player and center camera
 				break;
 			case CREDITS:
@@ -112,7 +112,7 @@ public class GdxGame extends ApplicationAdapter {
 			}
 			break;
 		case PLAYING:
-			Map.render(batch); // Render map (Rooms, items etc.) 
+			RoomHandler.render(batch); // Render map (Rooms, items etc.) 
 			player.render(batch); // Render player
 			break;
 		case CREDITS:

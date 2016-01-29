@@ -1,4 +1,4 @@
-package retrostruct.epsilon.handlers;
+package retrostruct.epsilon.input;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Buttons;
