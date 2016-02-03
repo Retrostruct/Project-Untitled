@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 import retrostruct.epsilon.enums.Verbs;
 import retrostruct.epsilon.graphics.Animation;
 import retrostruct.epsilon.handlers.ItemHandler;
+import retrostruct.epsilon.handlers.MathHandler;
 import retrostruct.epsilon.input.MouseHandler;
 
 public class Player extends Character {
@@ -31,6 +32,7 @@ public class Player extends Character {
 			// If nothing is pressed, instead set the target
 			if(!ItemHandler.interact(MouseHandler.getX(), MouseHandler.getY(), Verbs.PICK_UP, this))
 				targetX = MouseHandler.getX();
+				targetY = MouseHandler.getY();
 		}
 		
 		// Reset direction
@@ -49,18 +51,11 @@ public class Player extends Character {
 		
 		// Translate camera and move player
 		camera.translate(velocityx, 0);
-		camera.position.x = Math.max(0, Math.min(100, camera.position.x));
 		position.x += velocityx;
 		position.y += velocityy;
 		
-		String posMes = Float.toString(position.x) + ":" + Float.toString(position.y);
-		
-		System.out.println(posMes);
-		
-		position.y = clamp(position.y, (float)(0), (float)(floorHeight));
+		position.y = MathHandler.clamp(position.y, (float)(0), (float)(floorHeight));
 	}
 	
-	public static float clamp(float val, float min, float max) {
-	    return Math.max(min, Math.min(max, val));
-	}
+
 }
