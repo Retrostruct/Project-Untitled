@@ -14,9 +14,11 @@ import retrostruct.epsilon.debug.Log;
 import retrostruct.epsilon.entities.Player;
 import retrostruct.epsilon.entities.Room;
 import retrostruct.epsilon.enums.GameStates;
+import retrostruct.epsilon.handlers.MathHandler;
 import retrostruct.epsilon.handlers.RoomHandler;
 import retrostruct.epsilon.handlers.SaveGame;
 import retrostruct.epsilon.input.MouseHandler;
+import retrostruct.epsilon.items.Background;
 import retrostruct.epsilon.items.Handbag;
 import retrostruct.epsilon.items.Item;
 import retrostruct.epsilon.menus.MainMenu;
@@ -25,43 +27,42 @@ import retrostruct.epsilon.menus.PauseMenu;
 public class GdxGame extends ApplicationAdapter {
 	public static final int VIRTUAL_WIDTH = 1280;
 	public static final int VIRTUAL_HEIGHT = 720;
-	
-	private GameStates currentGameState = GameStates.MAIN_MENU;
-	
+
+	private GameStates currentGameState = GameStates.PLAYING;
+
 	private SpriteBatch batch;
 	private Color clear = new Color(0, 0, 0, 1);
 	private OrthographicCamera camera;
 	private Viewport viewport;
 	private Scaling scaling = Scaling.fit;
 	private Player player;
-	
+
 	public void create () {
 		Log.DEBUG_MODE = true;
 		batch = new SpriteBatch(); // Create sprite batch
 		camera = new OrthographicCamera(VIRTUAL_WIDTH, VIRTUAL_HEIGHT); // Create camera
-	
-		player = new Player(0, 0);		
+
+		player = new Player(0, 0);
 
 		viewport = new ScalingViewport(scaling, VIRTUAL_WIDTH, VIRTUAL_HEIGHT, camera); // Create viewport
 		camera.setToOrtho(false);
 		camera.update(); // Initially, update camera
 
-		SaveGame saveGame = new SaveGame();
 		Room room = new Room();
-		room.setId(0);
-		room.setName("Room");
-		
-		Item[] items = new Item[] {
-				new Handbag(0, 0, 0)
-		};
-		
+		room.setId(1);
+		room.setName("Debug");
+
+		Item[] items = new Item[] {new Background("map.png", 1, 0,0), new Handbag(0, 0, 0)};
+
 		room.setItems(items);
-		
+
 		Room[] rooms = new Room[] {room};
+
+		SaveGame saveGame = new SaveGame();
 		saveGame.setRooms(rooms);
-		saveGame.setPlayer(player);
 		//saveGame.Load(0);
-		//RoomHandler.loadAllRooms(saveGame);
+		RoomHandler.loadAllRooms(saveGame);
+
 	}
 
 	public void render () {
@@ -78,32 +79,33 @@ public class GdxGame extends ApplicationAdapter {
 				player.update(camera); // Update player and center camera
 				break;
 			case INVENTORY:
-				
+
 				break;
 			case CREDITS:
-				
+
 				break;
 		}
-		
+
+		camera.position.x = MathHandler.clamp(camera.position.x, 0, RoomHandler.getCurrentRoomDimensions().x - viewport.getScreenWidth());
 		camera.update();
 		batch.setProjectionMatrix(camera.combined); // Set the projection matrix of the sprite batch
-		
+
 		clear();
 		batch.begin(); // Begin rendering the scene
-		
+
 		switch(currentGameState) {
 		case MAIN_MENU:
 			switch(MainMenu.update()) {
 			case NONE:
 				break;
 			case NEW_GAME:
-				
+
 				break;
 			case LOAD_GAME:
-				
+
 				break;
 			case SETTINGS:
-				
+
 				break;
 			case EXIT:
 				// Save
@@ -119,10 +121,10 @@ public class GdxGame extends ApplicationAdapter {
 				currentGameState = GameStates.PLAYING;
 				break;
 			case SAVE_GAME:
-				
+
 				break;
 			case LOAD_GAME:
-				
+
 				break;
 			case SETTINGS:
 				// PC master race only
@@ -134,27 +136,27 @@ public class GdxGame extends ApplicationAdapter {
 			}
 			break;
 		case PLAYING:
-			RoomHandler.render(batch); // Render map (Rooms, items etc.) 
+			RoomHandler.render(batch); // Render map (Rooms, items etc.)
 			player.render(batch); // Render player
 			break;
 		case INVENTORY:
 			
 			break;
 		case CREDITS:
-			
+
 			break;
 		}
-		
+
 		batch.end();
 	}
-	
+
 	public void clear() {
 		// Clear the screen
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClearColor(clear.r, clear.g, clear.b, clear.a);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 	}
-	
+
 	public void resize(int width, int height) {
 		// When the window is resized, change the viewport size
 		viewport.update(width, height);
