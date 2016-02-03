@@ -6,7 +6,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -60,6 +59,9 @@ public class GdxGame extends ApplicationAdapter {
 			case PLAYING:
 				RoomHandler.update(); // Update map (Rooms, items etc.)
 				player.update(camera); // Update player and center camera
+				break;
+			case INVENTORY:
+				
 				break;
 			case CREDITS:
 				
