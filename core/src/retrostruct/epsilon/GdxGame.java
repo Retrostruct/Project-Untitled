@@ -137,6 +137,9 @@ public class GdxGame extends ApplicationAdapter {
 			RoomHandler.render(batch); // Render map (Rooms, items etc.) 
 			player.render(batch); // Render player
 			break;
+		case INVENTORY:
+			
+			break;
 		case CREDITS:
 			
 			break;
