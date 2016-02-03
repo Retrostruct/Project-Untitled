@@ -31,6 +31,7 @@ public class Player extends Character {
 			// If nothing is pressed, instead set the target
 			if(!ItemHandler.interact(MouseHandler.getX(), MouseHandler.getY(), Verbs.PICK_UP, this))
 				targetX = MouseHandler.getX();
+				targetY = MouseHandler.getY();
 		}
 		
 		// Reset direction
@@ -49,13 +50,8 @@ public class Player extends Character {
 		
 		// Translate camera and move player
 		camera.translate(velocityx, 0);
-		camera.position.x = Math.max(0, Math.min(100, camera.position.x));
 		position.x += velocityx;
 		position.y += velocityy;
-		
-		String posMes = Float.toString(position.x) + ":" + Float.toString(position.y);
-		
-		System.out.println(posMes);
 		
 		position.y = clamp(position.y, (float)(0), (float)(floorHeight));
 	}
