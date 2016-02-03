@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 import retrostruct.epsilon.enums.Verbs;
 import retrostruct.epsilon.graphics.Animation;
 import retrostruct.epsilon.handlers.ItemHandler;
+import retrostruct.epsilon.handlers.MathHandler;
 import retrostruct.epsilon.input.MouseHandler;
 
 public class Player extends Character {
@@ -53,10 +54,8 @@ public class Player extends Character {
 		position.x += velocityx;
 		position.y += velocityy;
 		
-		position.y = clamp(position.y, (float)(0), (float)(floorHeight));
+		position.y = MathHandler.clamp(position.y, (float)(0), (float)(floorHeight));
 	}
 	
-	public static float clamp(float val, float min, float max) {
-	    return Math.max(min, Math.min(max, val));
-	}
+
 }

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 
 import retrostruct.epsilon.entities.Room;
 
@@ -32,6 +33,10 @@ public class RoomHandler {
 			// Load content of rooms (textures etc.)
 			rooms[i].loadContent();
 		}
+	}
+	
+	public static Vector2 getCurrentRoomDimensions(){
+		return rooms[currentRoom].getDimensions();
 	}
 	
 	private static void loadDefaultRooms() {

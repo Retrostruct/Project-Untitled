@@ -14,6 +14,7 @@ import retrostruct.epsilon.debug.Log;
 import retrostruct.epsilon.entities.Player;
 import retrostruct.epsilon.entities.Room;
 import retrostruct.epsilon.enums.GameStates;
+import retrostruct.epsilon.handlers.MathHandler;
 import retrostruct.epsilon.handlers.RoomHandler;
 import retrostruct.epsilon.handlers.SaveGame;
 import retrostruct.epsilon.input.MouseHandler;
@@ -84,6 +85,7 @@ public class GdxGame extends ApplicationAdapter {
 				break;
 		}
 		
+		camera.position.x = MathHandler.clamp(camera.position.x, 0, RoomHandler.getCurrentRoomDimensions().x - viewport.getScreenWidth());
 		camera.update();
 		batch.setProjectionMatrix(camera.combined); // Set the projection matrix of the sprite batch
 		
