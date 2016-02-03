@@ -1,20 +1,11 @@
 package retrostruct.epsilon.handlers;
 
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
-import java.awt.Point;
-import java.awt.Rectangle;
-
-import jdk.nashorn.internal.runtime.NumberToString;
 
 /**
  * Created by sebastian.fransson on 2015-11-18.

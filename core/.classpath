@@ -18,14 +18,12 @@
 	<classpathentry kind="lib" path="libs/lwjgl-platform-2.9.2-natives-linux.jar"/>
 	<classpathentry kind="lib" path="libs/lwjgl-platform-2.9.2-natives-osx.jar"/>
 	<classpathentry kind="lib" path="libs/lwjgl-platform-2.9.2-natives-windows.jar"/>
-	<classpathentry kind="lib" path="libs/gdx-backend-android-sources.jar"/>
 	<classpathentry kind="lib" path="libs/gdx-backend-gwt-sources.jar"/>
 	<classpathentry kind="lib" path="libs/gdx-backend-headless-sources.jar"/>
 	<classpathentry kind="lib" path="libs/gdx-backend-jglfw-sources.jar"/>
 	<classpathentry kind="lib" path="libs/gdx-backend-lwjgl-sources.jar"/>
 	<classpathentry kind="lib" path="libs/gdx-backend-robovm-sources.jar"/>
 	<classpathentry kind="lib" path="libs/gdx-sources.jar"/>
-	<classpathentry kind="lib" path="libs/gdx-backend-android.jar"/>
 	<classpathentry kind="lib" path="libs/gdx-backend-gwt.jar"/>
 	<classpathentry kind="lib" path="libs/gdx-backend-headless.jar"/>
 	<classpathentry kind="lib" path="libs/gdx-backend-jglfw-natives.jar"/>
