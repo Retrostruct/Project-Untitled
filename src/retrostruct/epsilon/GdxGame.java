@@ -12,10 +12,14 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 
 import retrostruct.epsilon.debug.Log;
 import retrostruct.epsilon.entities.Player;
+import retrostruct.epsilon.entities.Room;
 import retrostruct.epsilon.enums.GameStates;
 import retrostruct.epsilon.handlers.RoomHandler;
 import retrostruct.epsilon.handlers.SaveGame;
 import retrostruct.epsilon.input.MouseHandler;
+import retrostruct.epsilon.items.Background;
+import retrostruct.epsilon.items.Handbag;
+import retrostruct.epsilon.items.Item;
 import retrostruct.epsilon.menus.MainMenu;
 import retrostruct.epsilon.menus.PauseMenu;
 
@@ -23,7 +27,7 @@ public class GdxGame extends ApplicationAdapter {
 	public static final int VIRTUAL_WIDTH = 1280;
 	public static final int VIRTUAL_HEIGHT = 720;
 	
-	private GameStates currentGameState = GameStates.MAIN_MENU;
+	private GameStates currentGameState = GameStates.PLAYING;
 	
 	private SpriteBatch batch;
 	private Color clear = new Color(0, 0, 0, 1);
@@ -38,12 +42,24 @@ public class GdxGame extends ApplicationAdapter {
 		camera = new OrthographicCamera(VIRTUAL_WIDTH, VIRTUAL_HEIGHT); // Create camera
 	
 		player = new Player(0, 0);		
-
+		
 		viewport = new ScalingViewport(scaling, VIRTUAL_WIDTH, VIRTUAL_HEIGHT, camera); // Create viewport
 		camera.setToOrtho(false);
 		camera.update(); // Initially, update camera
+		
+		Room room = new Room();
+		room.setId(1);
+		room.setName("Debug");
+		
+		Item[] items = new Item[] {new Background("map.png", 1, 0,0), new Handbag(0, 0, 0)};
+		
+		room.setItems(items);
+		
+		Room[] rooms = new Room[] {room}; 
+		
 		SaveGame saveGame = new SaveGame();
-		saveGame.Load(0);
+		saveGame.setRooms(rooms);
+		//saveGame.Load(0);
 		RoomHandler.loadAllRooms(saveGame);
 	}
 
