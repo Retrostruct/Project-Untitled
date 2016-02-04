@@ -1,6 +1,7 @@
 package retrostruct.epsilon.handlers;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 
 import retrostruct.epsilon.entities.Room;
 
@@ -30,9 +31,30 @@ public class RoomHandler {
 		}
 	}
 	
+	public static Vector2 getCurrentRoomDimensions(){
+		return rooms[currentRoom].getDimensions();
+	}
+	
 	private static void loadDefaultRooms() {
 		// Load the default rooms
-		Room[] defaultRooms = null;
+		Room r;
+		int nrOfRooms = 1;
+		Room[] defaultRooms = new Room[nrOfRooms];
+		for(int j = 0; j < nrOfRooms; j++) {
+			try {
+				r = null;
+				FileInputStream fileIn = new FileInputStream(SaveGame.NEW_GAME_PATH + j);
+				ObjectInputStream in = new ObjectInputStream(fileIn);
+				r = (Room)in.readObject();
+				defaultRooms[j] = r;
+				in.close();
+				fileIn.close();
+			} catch(IOException i) {
+				i.printStackTrace();
+			} catch(ClassNotFoundException c) {
+				c.printStackTrace();
+			}
+		}
 		rooms = defaultRooms;
 	}
 	
