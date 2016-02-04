@@ -13,6 +13,9 @@ public class Animation {
 	private int x, y, frameX, frameY;
 	private float timer, interval;
 	
+	public int getWidth() { return frameX; }
+	public int getHeight() { return frameY; }
+	
 	public Animation(String path, int frameX, int frameY) {
 		try {
 			sheet = new Texture(path);

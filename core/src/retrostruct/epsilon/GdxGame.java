@@ -42,7 +42,7 @@ public class GdxGame extends ApplicationAdapter {
 		batch = new SpriteBatch(); // Create sprite batch
 		camera = new OrthographicCamera(VIRTUAL_WIDTH, VIRTUAL_HEIGHT); // Create camera
 
-		player = new Player(0, 0);
+		player = new Player(1000, 0);
 
 		viewport = new ScalingViewport(scaling, VIRTUAL_WIDTH, VIRTUAL_HEIGHT, camera); // Create viewport
 		camera.setToOrtho(false);
@@ -86,7 +86,7 @@ public class GdxGame extends ApplicationAdapter {
 				break;
 		}
 
-		camera.position.x = MathHandler.clamp(camera.position.x, 0, RoomHandler.getCurrentRoomDimensions().x - viewport.getScreenWidth());
+		camera.position.x = MathHandler.clamp(camera.position.x, viewport.getScreenWidth()/2, RoomHandler.getCurrentRoomDimensions().x - viewport.getScreenWidth());
 		camera.update();
 		batch.setProjectionMatrix(camera.combined); // Set the projection matrix of the sprite batch
 
