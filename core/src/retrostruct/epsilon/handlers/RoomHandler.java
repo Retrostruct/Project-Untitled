@@ -37,24 +37,10 @@ public class RoomHandler {
 	
 	private static void loadDefaultRooms() {
 		// Load the default rooms
-		Room r;
-		int nrOfRooms = 1;
-		Room[] defaultRooms = new Room[nrOfRooms];
-		for(int j = 0; j < nrOfRooms; j++) {
-			try {
-				r = null;
-				FileInputStream fileIn = new FileInputStream(SaveGame.NEW_GAME_PATH + j);
-				ObjectInputStream in = new ObjectInputStream(fileIn);
-				r = (Room)in.readObject();
-				defaultRooms[j] = r;
-				in.close();
-				fileIn.close();
-			} catch(IOException i) {
-				i.printStackTrace();
-			} catch(ClassNotFoundException c) {
-				c.printStackTrace();
-			}
-		}
+		Room[] defaultRooms = null;
+		
+		// TODO: Actually make all default rooms here...
+		
 		rooms = defaultRooms;
 	}
 	
