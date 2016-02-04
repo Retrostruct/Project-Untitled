@@ -1,9 +1,5 @@
 package retrostruct.epsilon.handlers;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import retrostruct.epsilon.entities.Room;
@@ -15,7 +11,7 @@ public class RoomHandler {
 	};
 	
 	private static Room[] rooms;
-	private static int currentRoom;
+	private static int currentRoom = 0;
 	
 	public static void setCurrentRoom(int id) { currentRoom = id; }
 	public static Room getCurrentRoom(int id) { return rooms[id]; }
