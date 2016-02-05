@@ -26,7 +26,7 @@ import retrostruct.epsilon.menus.PauseMenu;
 
 public class GdxGame extends ApplicationAdapter {
 	public static final int VIRTUAL_WIDTH = 1280;
-	public static final int VIRTUAL_HEIGHT = 720;
+	public static final int VIRTUAL_HEIGHT = VIRTUAL_WIDTH / 16 * 9;
 
 	private GameStates currentGameState = GameStates.PLAYING;
 
@@ -34,7 +34,7 @@ public class GdxGame extends ApplicationAdapter {
 	private Color clear = new Color(0, 0, 0, 1);
 	private OrthographicCamera camera;
 	private Viewport viewport;
-	private Scaling scaling = Scaling.fit;
+	private Scaling scaling = Scaling.fill;
 	private Player player;
 
 	public void create () {

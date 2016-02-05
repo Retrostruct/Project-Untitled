@@ -14,8 +14,8 @@ public class Player extends Character {
 	private static final long serialVersionUID = -5509279692571456935L;
 	
 	private Vector2 direction = new Vector2();
-	private int targetX = 0;
-	private int targetY = 0;
+	private int targetX;
+	private int targetY;
 	private int floorHeight = 150;
 	private float speed = 100.0f;
 	private int[] storage = new int[8]; // Create an inventory with 8 slots
@@ -25,6 +25,8 @@ public class Player extends Character {
 	public Player(float x, float y) {
 		super(x, y);
 		animation = new Animation("badlogic.jpg", 256, 256);
+		targetX = (int)x;
+		targetY = (int)y;
 	}
 	
 	public void update(OrthographicCamera camera) {
