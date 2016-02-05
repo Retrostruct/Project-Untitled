@@ -42,12 +42,20 @@ public class GdxGame extends ApplicationAdapter {
 		batch = new SpriteBatch(); // Create sprite batch
 		camera = new OrthographicCamera(VIRTUAL_WIDTH, VIRTUAL_HEIGHT); // Create camera
 
-		player = new Player(1000, 0);
+		player = new Player(1000, 0); // Set player position here
 
 		viewport = new ScalingViewport(scaling, VIRTUAL_WIDTH, VIRTUAL_HEIGHT, camera); // Create viewport
 		camera.setToOrtho(false);
 		camera.update(); // Initially, update camera
-
+		
+		/* How to load a custom room.
+		 * 1. Create a room.
+		 * 2. Create an array of items.
+		 * 3. Assign the item array to the room.
+		 * 4. Create a room array and add the room.
+		 * 5. Create a save game and add the room array.
+		 * 6. Using RoomHandler, load the save game.
+		 */
 		Room room = new Room();
 		room.setId(1);
 		room.setName("Debug");

@@ -20,7 +20,7 @@ public class Player extends Character {
 	private float speed = 100.0f;
 	private int[] storage = new int[8]; // Create an inventory with 8 slots
 	
-	public int getItemIdFromStorage(int i) { return storage[i]; } // Should probably check for array out of bounds exeption...
+	public int getItemIdFromStorage(int i) { return storage[i]; } // Should probably check for array out of bounds exception...
 
 	public Player(float x, float y) {
 		super(x, y);
