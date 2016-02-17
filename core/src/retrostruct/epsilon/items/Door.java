@@ -13,7 +13,6 @@ public class Door extends Item implements Updateable, Renderable, Interactable {
 
 	public Door(String name, int id, float x, float y, int width, int height) {
 		super(name, id, x, y, width, height);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public void loadContent() {
@@ -22,19 +21,16 @@ public class Door extends Item implements Updateable, Renderable, Interactable {
 
 	@Override
 	public String interact(Verbs verb) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void render(SpriteBatch batch) {
-		// TODO Auto-generated method stub
 		
 	}
 

@@ -25,16 +25,16 @@ import retrostruct.epsilon.menus.MainMenu;
 import retrostruct.epsilon.menus.PauseMenu;
 
 public class GdxGame extends ApplicationAdapter {
-	public static final int VIRTUAL_WIDTH = 1280;
-	public static final int VIRTUAL_HEIGHT = VIRTUAL_WIDTH / 16 * 9;
+	public static final int VIRTUAL_WIDTH = 1280; // Width of window
+	public static final int VIRTUAL_HEIGHT = VIRTUAL_WIDTH / 16 * 9; // Calculate the height to 16:9 aspect ratio
 
-	private GameStates currentGameState = GameStates.PLAYING;
+	private GameStates currentGameState = GameStates.PLAYING; // Initially, set the game state
 
-	private SpriteBatch batch;
-	private Color clear = new Color(0, 0, 0, 1);
-	private OrthographicCamera camera;
-	private Viewport viewport;
-	private Scaling scaling = Scaling.fill;
+	private SpriteBatch batch; // Sprite batch
+	private Color clear = new Color(0, 0, 0, 1); // Clear color
+	private OrthographicCamera camera; // Main camera, we should probably be good with only one
+	private Viewport viewport; // Main viewport
+	private Scaling scaling = Scaling.fill; // This is the scaling method which will be used to render the game
 	private Player player;
 
 	public void create () {
@@ -45,7 +45,7 @@ public class GdxGame extends ApplicationAdapter {
 		player = new Player(1000, 0); // Set player position here
 
 		viewport = new ScalingViewport(scaling, VIRTUAL_WIDTH, VIRTUAL_HEIGHT, camera); // Create viewport
-		camera.setToOrtho(false);
+		camera.setToOrtho(false); // Set to non orthographic camera
 		camera.update(); // Initially, update camera
 		
 		/* How to load a custom room.
@@ -74,7 +74,11 @@ public class GdxGame extends ApplicationAdapter {
 	}
 
 	public void render () {
-		MouseHandler.update(camera);
+		MouseHandler.update(camera); // Update the mouse handler
+		
+		/* Here are the game states
+		 * Update in the corresponding case 
+		 */
 		switch(currentGameState) {
 			case MAIN_MENU:
 				MainMenu.render(batch);
@@ -90,15 +94,16 @@ public class GdxGame extends ApplicationAdapter {
 
 				break;
 			case CREDITS:
-
+				// TODO: The game should probably end after the credits?
 				break;
 		}
 
+		// Calculate the camera position corresponding to the players position and the room size
 		camera.position.x = MathHandler.clamp(camera.position.x, viewport.getScreenWidth()/2, RoomHandler.getCurrentRoomDimensions().x - viewport.getScreenWidth());
 		camera.update();
 		batch.setProjectionMatrix(camera.combined); // Set the projection matrix of the sprite batch
 
-		clear();
+		clear(); // Clear the screen
 		batch.begin(); // Begin rendering the scene
 
 		switch(currentGameState) {

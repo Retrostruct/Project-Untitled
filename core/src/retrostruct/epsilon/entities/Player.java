@@ -14,17 +14,18 @@ public class Player extends Character {
 	private static final long serialVersionUID = -5509279692571456935L;
 	
 	private Vector2 direction = new Vector2();
-	private int targetX;
-	private int targetY;
-	private int floorHeight = 150;
-	private float speed = 200.0f;
+	private int targetX; // The x-position of the target(mouse position)
+	private int targetY; // The y-position of the target(mouse position)
+	private int floorHeight = 150; // Height of the floor, this is used so the player can walk along the y-axis
+	private float speed = 200.0f; // General player movment speed
 	private int[] storage = new int[8]; // Create an inventory with 8 slots
 	
-	public int getItemIdFromStorage(int i) { return storage[i]; } // Should probably check for array out of bounds exception...
+	public int getItemIdFromStorage(int i) { return storage[i]; } // TODO: Should probably check for array out of bounds exception...
 
 	public Player(float x, float y) {
 		super(x, y);
-		animation = new Animation("badlogic.jpg", 256, 256);
+		animation = new Animation("badlogic.jpg", 256, 256); // Load the animation
+		// Set target to initial position in order to prevent movement at first
 		targetX = (int)x;
 		targetY = (int)y;
 	}
@@ -32,7 +33,7 @@ public class Player extends Character {
 	public void update(OrthographicCamera camera) {
 		if(MouseHandler.isPressed()) {
 			// If nothing is pressed, instead set the target
-			if(!ItemHandler.interact(MouseHandler.getX(), MouseHandler.getY(), Verbs.PICK_UP, this))
+			if(!ItemHandler.interact(MouseHandler.getX(), MouseHandler.getY(), Verbs.PICK_UP, this)) // TODO: Not sure why interact is used here...
 				targetX = MouseHandler.getX();
 				targetY = MouseHandler.getY();
 		}
