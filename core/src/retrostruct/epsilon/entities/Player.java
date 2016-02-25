@@ -39,19 +39,16 @@ public class Player extends Character {
 		}
 		
 		// Reset direction
-		direction.x = 0;
-		direction.y = 0;
+		direction.x = targetX - position.x;
+		direction.y = targetY - position.y;
 		
-		if(targetX > position.x) direction.x = 1;
-		else if(targetX < position.x) direction.x = -1;
+		direction.nor();
 		
-		if(targetY > position.y) direction.y = 1;
-		else if(targetY < position.y) direction.y = -1;
+		System.out.println(direction.toString());
 		
 		float velocityx = direction.x * speed * Gdx.graphics.getDeltaTime();
 		
-		float someValue = 1.0f; // TODO: Make this value depend on the direction vector which should be normalized
-		float velocityy = direction.y * speed * Gdx.graphics.getDeltaTime() * someValue;
+		float velocityy = direction.y * speed * Gdx.graphics.getDeltaTime();
 		
 		if(targetX > position.x) position.x = MathHandler.clamp(position.x + velocityx, position.x, targetX);
 		else if(targetX < position.x) direction.x = position.x = MathHandler.clamp(position.x + velocityx, targetX, position.x);

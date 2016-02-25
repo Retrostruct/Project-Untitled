@@ -2,6 +2,7 @@ package retrostruct.epsilon;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -24,6 +25,10 @@ import retrostruct.epsilon.items.Item;
 import retrostruct.epsilon.menus.MainMenu;
 import retrostruct.epsilon.menus.PauseMenu;
 
+/* Here is the main class of the game
+ * Everything gets loaded and initialized in this class
+ * This class is also used for testing
+ */
 public class GdxGame extends ApplicationAdapter {
 	public static final int VIRTUAL_WIDTH = 1280; // Width of window
 	public static final int VIRTUAL_HEIGHT = VIRTUAL_WIDTH / 16 * 9; // Calculate the height to 16:9 aspect ratio
@@ -75,6 +80,8 @@ public class GdxGame extends ApplicationAdapter {
 
 	public void render () {
 		MouseHandler.update(camera); // Update the mouse handler
+		if(Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) 
+			Gdx.app.exit();
 		
 		/* Here are the game states
 		 * Update in the corresponding case 
@@ -106,6 +113,10 @@ public class GdxGame extends ApplicationAdapter {
 		clear(); // Clear the screen
 		batch.begin(); // Begin rendering the scene
 
+		/* Here is the rendering of the different game states
+		 * Do the same as in update
+		 * The main and pause menu has its own cases
+		 */
 		switch(currentGameState) {
 		case MAIN_MENU:
 			switch(MainMenu.update()) {
@@ -160,7 +171,7 @@ public class GdxGame extends ApplicationAdapter {
 			break;
 		}
 
-		batch.end();
+		batch.end(); // End the sprite batch
 	}
 
 	public void clear() {
