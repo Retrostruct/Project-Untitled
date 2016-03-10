@@ -54,7 +54,7 @@ public class Player extends Character {
 		// Translate camera and move player
 		position.x += velocityx;
 		position.y += velocityy;
-		camera.position.x = position.x + this.animation.getWidth()/2;
+		//camera.position.x = position.x + this.animation.getWidth()/2;
 		camera.translate(velocityx, 0);
 		
 		position.y = MathHandler.clamp(position.y, (float)(0), (float)(floorHeight));

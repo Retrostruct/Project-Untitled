@@ -20,13 +20,11 @@ public class Dialogue {
     int stringNumber = 0;
     public boolean done = false;
 
-
     public Dialogue(String[] strings){
         this.strings = strings;
         image = new Texture(Gdx.files.internal("red.jpg"));
         layout = new GlyphLayout();
     }
-
 
     public void Render(SpriteBatch spriteBatch, BitmapFont font){
 
@@ -38,7 +36,6 @@ public class Dialogue {
         font.draw(spriteBatch, strings[stringNumber], 400 - width/2,  500 + height/2);
 
         interval = strings[stringNumber].length() * 0.1f;//Sets the time for how long the set of text will be shown on the screen before the timer resets
-
 
         //timer
         if(stringNumber < strings.length){
@@ -59,7 +56,6 @@ public class Dialogue {
 
         if(done)
             font.draw(spriteBatch, Float.toString(1231f), 400,  100);
-
 
         font.draw(spriteBatch, Float.toString(seconds), 400,  400);
         font.draw(spriteBatch, Float.toString(interval), 800,  400);
