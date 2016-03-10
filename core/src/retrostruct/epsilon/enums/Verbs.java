@@ -8,5 +8,6 @@ public enum Verbs {
 	OPEN,
 	CLOSE,
 	PUSH,
-	PULL
+	PULL,
+	WALK_TO
 }

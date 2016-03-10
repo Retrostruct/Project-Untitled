@@ -27,7 +27,7 @@ public class Handbag extends Item implements Interactable, Renderable {
 	Texture texture; // Can be replaced with an animation or whatever
 	
 	public Handbag(int id, float x, float y) {
-		super("Handbag", id, x, y, 512, 512);
+		super("Handbag", id, x, y, 105, 131);
 	}
 	
 	public void loadContent() {

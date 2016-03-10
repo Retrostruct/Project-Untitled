@@ -8,8 +8,7 @@ public class Log {
 		if(!DEBUG_MODE) 
 			return;
 		
-		String timeStamp = "";
-		System.out.println("(" + timeStamp + ") " + s);	
+		System.out.println(s);	
 	}
 
 }

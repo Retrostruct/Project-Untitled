@@ -34,8 +34,11 @@ public class Player extends Character {
 	public void update(OrthographicCamera camera) {
 		if(MouseHandler.isPressed()) {
 			// If nothing is pressed, instead set the target
-			if(!ItemHandler.interact(MouseHandler.getX(), MouseHandler.getY(), Verbs.PICK_UP, this)) // TODO: Not sure why interact is used here...
+			ItemHandler.interact(MouseHandler.getX(), MouseHandler.getY(), Verbs.PICK_UP, this);
+			if(!ItemHandler.interact(MouseHandler.getX(), MouseHandler.getY(), Verbs.WALK_TO, this)) // TODO: Not sure why interact is used here...
 				if(RoomHandler.isRectangleColliding(new Rectangle(MouseHandler.getX(), MouseHandler.getY(), 1, 1))) {
+				} else if(MouseHandler.getY() > RoomHandler.getCurrentFloorHeight()) {
+					return;
 				} else {
 					targetX = MouseHandler.getX() - getWidth() / 2;
 					targetY = MouseHandler.getY();

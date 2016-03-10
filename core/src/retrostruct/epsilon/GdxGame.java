@@ -15,6 +15,7 @@ import retrostruct.epsilon.debug.Log;
 import retrostruct.epsilon.entities.Player;
 import retrostruct.epsilon.entities.Room;
 import retrostruct.epsilon.enums.GameStates;
+import retrostruct.epsilon.handlers.ItemHandler;
 import retrostruct.epsilon.handlers.MathHandler;
 import retrostruct.epsilon.handlers.RoomHandler;
 import retrostruct.epsilon.handlers.SaveGame;
@@ -48,7 +49,7 @@ public class GdxGame extends ApplicationAdapter {
 		batch = new SpriteBatch(); // Create sprite batch
 		camera = new OrthographicCamera(VIRTUAL_WIDTH, VIRTUAL_HEIGHT); // Create camera
 
-		player = new Player(1000, 0); // Set player position here
+		player = new Player(300, 0); // Set player position here
 
 		viewport = new ScalingViewport(scaling, VIRTUAL_WIDTH, VIRTUAL_HEIGHT, camera); // Create viewport
 		camera.setToOrtho(false); // Set to non orthographic camera
@@ -68,8 +69,8 @@ public class GdxGame extends ApplicationAdapter {
 
 		Item[] items = new Item[] {
 				new Background("room.png", 1, 0,0),
-				new Handbag(0, 1219-36, 720-226-128),
-				new Door(1, 10, 10)};
+				new Handbag(0, 1219-36+3, 720-226-105),
+				new Door(1, 20, 85)};
 
 		room.setItems(items);
 		room.setDimensions(2300, 720);
@@ -83,6 +84,11 @@ public class GdxGame extends ApplicationAdapter {
 		saveGame.setRooms(rooms);
 		//saveGame.Load(0);
 		RoomHandler.loadAllRooms(saveGame);
+		for(int i = 0; i < items.length; i++) {
+			
+		}
+		
+		ItemHandler.AddItem(items[1]);
 
 	}
 

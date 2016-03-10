@@ -15,11 +15,11 @@ public class Door extends Item implements Updateable, Renderable, Interactable {
 	Animation animation;
 
 	public Door(int id, float x, float y) {
-		super("Door", id, x, y, 4096/10, 597);
+		super("Door", id, x, y, 171, 597);
 	}
 	
 	public void loadContent() {
-		animation = new Animation("door.png", 4096/10, 597);
+		animation = new Animation("door.png", 171, 597);
 		animation.setInterval(10);
 	}
 
