@@ -9,6 +9,9 @@ import retrostruct.epsilon.interfaces.Renderable;
 public abstract class Character extends GameObject implements Renderable {
 	
 	protected Animation animation;
+	
+	protected int getWidth() { return animation.getWidth(); }
+	protected int getHeight() { return animation.getHeight(); }
 
 	public Character(float x, float y) {
 		super(x, y);

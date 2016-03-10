@@ -20,6 +20,7 @@ import retrostruct.epsilon.handlers.RoomHandler;
 import retrostruct.epsilon.handlers.SaveGame;
 import retrostruct.epsilon.input.MouseHandler;
 import retrostruct.epsilon.items.Background;
+import retrostruct.epsilon.items.Door;
 import retrostruct.epsilon.items.Handbag;
 import retrostruct.epsilon.items.Item;
 import retrostruct.epsilon.menus.MainMenu;
@@ -36,7 +37,7 @@ public class GdxGame extends ApplicationAdapter {
 	private GameStates currentGameState = GameStates.PLAYING; // Initially, set the game state
 
 	private SpriteBatch batch; // Sprite batch
-	private Color clear = new Color(0, 0, 0, 1); // Clear color
+	private Color clear = new Color(1, 1, 1, 1); // Clear color
 	private OrthographicCamera camera; // Main camera, we should probably be good with only one
 	private Viewport viewport; // Main viewport
 	private Scaling scaling = Scaling.fill; // This is the scaling method which will be used to render the game
@@ -65,9 +66,16 @@ public class GdxGame extends ApplicationAdapter {
 		room.setId(1);
 		room.setName("Debug");
 
-		Item[] items = new Item[] {new Background("map.png", 1, 0,0), new Handbag(0, 0, 0)};
+		Item[] items = new Item[] {
+				new Background("room.png", 1, 0,0),
+				new Handbag(0, 1219-36, 720-226-128),
+				new Door(1, 10, 10)};
 
 		room.setItems(items);
+		room.setDimensions(2300, 720);
+		room.setFloorHeight(120);
+		room.addCollisionBox(275, 720 - 545 - 75, 884, 720);
+		room.addCollisionBox(1400, 0, 720, 720);
 
 		Room[] rooms = new Room[] {room};
 
@@ -106,7 +114,7 @@ public class GdxGame extends ApplicationAdapter {
 		}
 
 		// Calculate the camera position corresponding to the players position and the room size
-		camera.position.x = MathHandler.clamp(camera.position.x, viewport.getScreenWidth()/2, RoomHandler.getCurrentRoomDimensions().x - viewport.getScreenWidth());
+		camera.position.x = MathHandler.clamp(camera.position.x, viewport.getScreenWidth()/2, RoomHandler.getCurrentRoomDimensions().x - viewport.getScreenWidth() / 2);
 		camera.update();
 		batch.setProjectionMatrix(camera.combined); // Set the projection matrix of the sprite batch
 

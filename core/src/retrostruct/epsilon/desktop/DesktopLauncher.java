@@ -11,6 +11,8 @@ public class DesktopLauncher {
 		// Set the width and height of the game
 		config.width = GdxGame.VIRTUAL_WIDTH;
 		config.height = GdxGame.VIRTUAL_HEIGHT;
+		config.backgroundFPS = 60;
+		config.foregroundFPS = 60;
 		new LwjglApplication(new GdxGame(), config);
 	}
 }
