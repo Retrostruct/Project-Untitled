@@ -13,6 +13,9 @@ public class Animation {
 	private int x, y, frameX, frameY;
 	private float timer, interval;
 	
+	public void setTimer(float value) { timer = value; }
+	public void setInterval(float value) { interval = value; }
+	
 	public int getWidth() { return frameX; }
 	public int getHeight() { return frameY; }
 	
@@ -31,6 +34,7 @@ public class Animation {
 	
 	public void render(SpriteBatch batch, Vector2 position) {
 		batch.draw(sheet, position.x, position.y, x * frameX, y * frameY, frameX, frameY);
+		timer += Gdx.graphics.getDeltaTime() * 100;
 		
 		if(interval == 0.0f) return;
 		

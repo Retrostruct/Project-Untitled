@@ -2,6 +2,7 @@ package retrostruct.epsilon;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -19,22 +20,27 @@ import retrostruct.epsilon.handlers.RoomHandler;
 import retrostruct.epsilon.handlers.SaveGame;
 import retrostruct.epsilon.input.MouseHandler;
 import retrostruct.epsilon.items.Background;
+import retrostruct.epsilon.items.Door;
 import retrostruct.epsilon.items.Handbag;
 import retrostruct.epsilon.items.Item;
 import retrostruct.epsilon.menus.MainMenu;
 import retrostruct.epsilon.menus.PauseMenu;
 
+/* Here is the main class of the game
+ * Everything gets loaded and initialized in this class
+ * This class is also used for testing
+ */
 public class GdxGame extends ApplicationAdapter {
-	public static final int VIRTUAL_WIDTH = 1280;
-	public static final int VIRTUAL_HEIGHT = VIRTUAL_WIDTH / 16 * 9;
+	public static final int VIRTUAL_WIDTH = 1280; // Width of window
+	public static final int VIRTUAL_HEIGHT = VIRTUAL_WIDTH / 16 * 9; // Calculate the height to 16:9 aspect ratio
 
-	private GameStates currentGameState = GameStates.PLAYING;
+	private GameStates currentGameState = GameStates.PLAYING; // Initially, set the game state
 
-	private SpriteBatch batch;
-	private Color clear = new Color(0, 0, 0, 1);
-	private OrthographicCamera camera;
-	private Viewport viewport;
-	private Scaling scaling = Scaling.fill;
+	private SpriteBatch batch; // Sprite batch
+	private Color clear = new Color(1, 1, 1, 1); // Clear color
+	private OrthographicCamera camera; // Main camera, we should probably be good with only one
+	private Viewport viewport; // Main viewport
+	private Scaling scaling = Scaling.fill; // This is the scaling method which will be used to render the game
 	private Player player;
 
 	public void create () {
@@ -45,7 +51,7 @@ public class GdxGame extends ApplicationAdapter {
 		player = new Player(1000, 0); // Set player position here
 
 		viewport = new ScalingViewport(scaling, VIRTUAL_WIDTH, VIRTUAL_HEIGHT, camera); // Create viewport
-		camera.setToOrtho(false);
+		camera.setToOrtho(false); // Set to non orthographic camera
 		camera.update(); // Initially, update camera
 		
 		/* How to load a custom room.
@@ -60,9 +66,16 @@ public class GdxGame extends ApplicationAdapter {
 		room.setId(1);
 		room.setName("Debug");
 
-		Item[] items = new Item[] {new Background("map.png", 1, 0,0), new Handbag(0, 0, 0)};
+		Item[] items = new Item[] {
+				new Background("room.png", 1, 0,0),
+				new Handbag(0, 1219-36, 720-226-128),
+				new Door(1, 10, 10)};
 
 		room.setItems(items);
+		room.setDimensions(2300, 720);
+		room.setFloorHeight(120);
+		room.addCollisionBox(275, 720 - 545 - 75, 884, 720);
+		room.addCollisionBox(1400, 0, 720, 720);
 
 		Room[] rooms = new Room[] {room};
 
@@ -74,7 +87,13 @@ public class GdxGame extends ApplicationAdapter {
 	}
 
 	public void render () {
-		MouseHandler.update(camera);
+		MouseHandler.update(camera); // Update the mouse handler
+		if(Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) 
+			Gdx.app.exit();
+		
+		/* Here are the game states
+		 * Update in the corresponding case 
+		 */
 		switch(currentGameState) {
 			case MAIN_MENU:
 				MainMenu.render(batch);
@@ -90,17 +109,22 @@ public class GdxGame extends ApplicationAdapter {
 
 				break;
 			case CREDITS:
-
+				// TODO: The game should probably end after the credits?
 				break;
 		}
 
-		camera.position.x = MathHandler.clamp(camera.position.x, viewport.getScreenWidth()/2, RoomHandler.getCurrentRoomDimensions().x - viewport.getScreenWidth());
+		// Calculate the camera position corresponding to the players position and the room size
+		camera.position.x = MathHandler.clamp(camera.position.x, viewport.getScreenWidth()/2, RoomHandler.getCurrentRoomDimensions().x - viewport.getScreenWidth() / 2);
 		camera.update();
 		batch.setProjectionMatrix(camera.combined); // Set the projection matrix of the sprite batch
 
-		clear();
+		clear(); // Clear the screen
 		batch.begin(); // Begin rendering the scene
 
+		/* Here is the rendering of the different game states
+		 * Do the same as in update
+		 * The main and pause menu has its own cases
+		 */
 		switch(currentGameState) {
 		case MAIN_MENU:
 			switch(MainMenu.update()) {
@@ -155,7 +179,7 @@ public class GdxGame extends ApplicationAdapter {
 			break;
 		}
 
-		batch.end();
+		batch.end(); // End the sprite batch
 	}
 
 	public void clear() {

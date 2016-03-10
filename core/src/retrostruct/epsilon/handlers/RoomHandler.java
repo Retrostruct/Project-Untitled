@@ -1,6 +1,7 @@
 package retrostruct.epsilon.handlers;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 import retrostruct.epsilon.entities.Room;
@@ -16,6 +17,10 @@ public class RoomHandler {
 	
 	public static void setCurrentRoom(int id) { currentRoom = id; }
 	public static Room getCurrentRoom(int id) { return rooms[id]; }
+	
+	public static int getCurrentFloorHeight() { return rooms[currentRoom].getFloorHeight(); }
+	
+	public static boolean isRectangleColliding(Rectangle r) { return rooms[currentRoom].isRectangleColliding(r); }
 	
 	public static void loadAllRooms(SaveGame saveGame) {
 		if(saveGame.getRooms() == null) {
