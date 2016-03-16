@@ -31,7 +31,7 @@ public class Handbag extends Item implements Interactable, Renderable {
 	}
 	
 	public void loadContent() {
-		texture = new Texture("handbag.png");
+		texture = new Texture("items/handbag.png");
 	}
 
 	public String interact(Verbs verb) {

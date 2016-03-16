@@ -4,11 +4,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
+import retrostruct.epsilon.debug.Log;
+import retrostruct.epsilon.handlers.ItemHandler;
 import retrostruct.epsilon.interfaces.Renderable;
 import retrostruct.epsilon.interfaces.Updateable;
 import retrostruct.epsilon.items.Item;
@@ -41,7 +42,7 @@ public class Room implements Serializable {
 
 	public void setName(String name) { this.name = name; }
 	public void setId(int id) { this.id = id; }
-	public void setItems(Item[] items) { this.items = items;}
+	public void setItems(Item[] items) { this.items = items; ItemHandler.setItems(items); }
 	
 	public String getName() { return name; }
 	public int getId() { return id; }
@@ -51,8 +52,12 @@ public class Room implements Serializable {
 		dimensions.x = x;
 		dimensions.y = y;
 	}
-	public Room() {
+	public Room(int id, String name) {
 		dimensions = new Vector2();
+		this.id = id;
+		this.name = name;
+		if(Log.DEBUG_MODE)
+			Log.print("Loaded room \"" + name + "\" id: " + id);
 		//bar = new Texture("blackBar.png");
 	}
 	

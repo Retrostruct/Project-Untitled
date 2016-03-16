@@ -13,17 +13,10 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 
 import retrostruct.epsilon.debug.Log;
 import retrostruct.epsilon.entities.Player;
-import retrostruct.epsilon.entities.Room;
 import retrostruct.epsilon.enums.GameStates;
-import retrostruct.epsilon.handlers.ItemHandler;
 import retrostruct.epsilon.handlers.MathHandler;
 import retrostruct.epsilon.handlers.RoomHandler;
-import retrostruct.epsilon.handlers.SaveGame;
 import retrostruct.epsilon.input.MouseHandler;
-import retrostruct.epsilon.items.Background;
-import retrostruct.epsilon.items.Door;
-import retrostruct.epsilon.items.Handbag;
-import retrostruct.epsilon.items.Item;
 import retrostruct.epsilon.menus.MainMenu;
 import retrostruct.epsilon.menus.PauseMenu;
 
@@ -42,10 +35,11 @@ public class GdxGame extends ApplicationAdapter {
 	private OrthographicCamera camera; // Main camera, we should probably be good with only one
 	private Viewport viewport; // Main viewport
 	private Scaling scaling = Scaling.fill; // This is the scaling method which will be used to render the game
+	
 	private Player player;
 
 	public void create () {
-		Log.DEBUG_MODE = true;
+		Log.DEBUG_MODE = true; // Print debug information
 		batch = new SpriteBatch(); // Create sprite batch
 		camera = new OrthographicCamera(VIRTUAL_WIDTH, VIRTUAL_HEIGHT); // Create camera
 
@@ -55,41 +49,7 @@ public class GdxGame extends ApplicationAdapter {
 		camera.setToOrtho(false); // Set to non orthographic camera
 		camera.update(); // Initially, update camera
 		
-		/* How to load a custom room.
-		 * 1. Create a room.
-		 * 2. Create an array of items.
-		 * 3. Assign the item array to the room.
-		 * 4. Create a room array and add the room.
-		 * 5. Create a save game and add the room array.
-		 * 6. Using RoomHandler, load the save game.
-		 */
-		Room room = new Room();
-		room.setId(1);
-		room.setName("Debug");
-
-		Item[] items = new Item[] {
-				new Background("room.png", 1, 0,0),
-				new Handbag(0, 1219-36+3, 720-226-105),
-				new Door(1, 20, 85)};
-
-		room.setItems(items);
-		room.setDimensions(2300, 720);
-		room.setFloorHeight(120);
-		room.addCollisionBox(275, 720 - 545 - 75, 884, 720);
-		room.addCollisionBox(1400, 0, 720, 720);
-
-		Room[] rooms = new Room[] {room};
-
-		SaveGame saveGame = new SaveGame();
-		saveGame.setRooms(rooms);
-		//saveGame.Load(0);
-		RoomHandler.loadAllRooms(saveGame);
-		for(int i = 0; i < items.length; i++) {
-			
-		}
-		
-		ItemHandler.AddItem(items[1]);
-
+		RoomHandler.loadAllRooms(RoomHandler.newGame()); // Load a new game
 	}
 
 	public void render () {

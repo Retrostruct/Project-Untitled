@@ -25,7 +25,7 @@ public class Player extends Character {
 
 	public Player(float x, float y) {
 		super(x, y);
-		animation = new Animation("badlogic.jpg", 256, 256); // Load the animation
+		animation = new Animation("characters/player.jpg", 256, 256); // Load the animation
 		// Set target to initial position in order to prevent movement at first
 		targetX = (int)x;
 		targetY = (int)y;
